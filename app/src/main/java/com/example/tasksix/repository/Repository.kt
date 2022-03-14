@@ -10,10 +10,10 @@ import kotlin.math.sqrt
 
 class Repository @Inject constructor(private val api: QuestApi){
 
-    fun getPoints() = Single.zip(
-            api.getAtmList(),
-            api.getInfoboxList(),
-            api.getFilialList(),
+    fun getPoints(city:String) = Single.zip(
+            api.getAtmList(city),
+            api.getInfoboxList(city),
+            api.getFilialList(city),
             { atm, infobox, filial ->
                 atm.forEach { it.pointType = Constants.TYPE_ATM }
                 infobox.forEach { it.pointType = Constants.TYPE_INFOBOX }

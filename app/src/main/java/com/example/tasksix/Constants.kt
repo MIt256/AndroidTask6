@@ -4,10 +4,13 @@ import com.google.android.gms.maps.model.LatLng
 
 class Constants {
     companion object {
-        const val URL_ATM = "/api/atm?city=Гомель"
-        const val URL_INFOBOX ="/api/infobox?city=Гомель"
-        const val URL_BANK = "/api/filials_info?city=Гомель"
+        const val URL_ATM = "/api/atm"
+        const val URL_INFOBOX ="/api/infobox"
+        const val URL_BANK = "/api/filials_info"
         const val URL_BASE = "https://belarusbank.by"
+        const val URL_QUERY = "city"
+
+        const val GOMEL = "Гомель"
 
         const val ERROR = "Error"
 

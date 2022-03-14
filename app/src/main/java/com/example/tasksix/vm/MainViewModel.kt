@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.tasksix.Constants.Companion.ERROR
+import com.example.tasksix.Constants.Companion.GOMEL
 import com.example.tasksix.model.MapPoint
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
@@ -26,7 +27,7 @@ class MainViewModel @Inject constructor(private val repo: Repository): ViewModel
          CoroutineScope(Dispatchers.IO).launch {
              try {
                  val points = ArrayList<MapPoint>()
-                 repo.getPoints()
+                 repo.getPoints(GOMEL)
                      .subscribeOn(Schedulers.io())
                      .observeOn(AndroidSchedulers.mainThread())
                      .subscribe(
