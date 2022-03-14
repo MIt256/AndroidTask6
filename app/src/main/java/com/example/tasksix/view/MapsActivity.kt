@@ -7,6 +7,7 @@ import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import com.example.tasksix.Constants.Companion.POINT_CENTRAL
 import com.example.tasksix.R
+import com.example.tasksix.di.application.MyApplication
 import com.example.tasksix.vm.MainViewModel
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -21,17 +22,22 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
+    @Inject
+    lateinit var vmFactory: ViewModelProvider.Factory
     private lateinit var mMap: GoogleMap
     private val binding by lazy { ActivityMapsBinding.inflate(layoutInflater) }
-    private val mainViewModel by lazy { ViewModelProvider(this).get(MainViewModel::class.java) }
+    private val mainViewModel by lazy { ViewModelProvider(this,vmFactory).get(MainViewModel::class.java) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContentView(binding.root)
+
+        (application as MyApplication).getApplicationComponent().inject(this)
 
         CoroutineScope(Dispatchers.IO).launch {
             if (mainViewModel.isListEmpty()) {
@@ -62,9 +68,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
        pointList.forEach{
             mMap.addMarker(
                 MarkerOptions()
-                    .position(
-                        LatLng(it.gps_x, it.gps_y)
-                    )
+                    .position(LatLng(it.gps_x, it.gps_y))
                     .title(it.pointType)
                     .snippet(it.city_type +" "+ it.city+", "+
                         it.address_type+ " "+it.address + " "+ it.house)

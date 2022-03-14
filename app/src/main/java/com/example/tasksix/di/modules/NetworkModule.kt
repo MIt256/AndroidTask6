@@ -1,32 +1,27 @@
-package com.example.tasksix
+package com.example.tasksix.di.modules
 
 import com.example.tasksix.Constants.Companion.URL_BASE
 import com.example.tasksix.model.QuestApi
+import dagger.Module
+import dagger.Provides
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Singleton
 
-object RetrofitObj {
-    private val retrofit by lazy {
+@Module
+object NetworkModule {
+    @Provides
+    @Singleton
+    fun provideRetrofit(): Retrofit =
         Retrofit.Builder()
             .baseUrl(URL_BASE)
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
             .build()
-    }
 
-    private val api by lazy {
-        retrofit.create(QuestApi::class.java)
-    }
-
-    fun getAtmList() =
-        api.getAtmList()
-
-    fun getInfoboxList() =
-       api.getInfoboxList()
-
-    fun getFilialList() =
-        api.getFilialList()
-
+    @Provides
+    @Singleton
+    fun provideService(retrofitObj: Retrofit): QuestApi =
+        retrofitObj.create(QuestApi::class.java)
 }
-
