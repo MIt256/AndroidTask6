@@ -1,7 +1,7 @@
-package com.example.tasksix.di.modules
+package com.example.tasksix.presentation.di.modules
 
-import com.example.tasksix.Constants.Companion.URL_BASE
-import com.example.tasksix.model.QuestApi
+import com.example.tasksix.constants.Constants.Companion.URL_BASE
+import com.example.tasksix.data.QuestApi
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit

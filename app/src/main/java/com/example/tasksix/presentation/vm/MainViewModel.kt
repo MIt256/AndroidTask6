@@ -1,17 +1,17 @@
-package com.example.tasksix.vm
+package com.example.tasksix.presentation.vm
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.tasksix.Constants.Companion.ERROR
-import com.example.tasksix.Constants.Companion.GOMEL
-import com.example.tasksix.model.MapPoint
+import com.example.tasksix.constants.Constants.Companion.ERROR
+import com.example.tasksix.constants.Constants.Companion.GOMEL
+import com.example.tasksix.data.model.MapPoint
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import com.example.tasksix.repository.Repository
+import com.example.tasksix.domain.Repository
 import java.lang.Exception
 import javax.inject.Inject
 

@@ -1,9 +1,10 @@
-package com.example.tasksix.model
+package com.example.tasksix.data
 
-import com.example.tasksix.Constants.Companion.URL_ATM
-import com.example.tasksix.Constants.Companion.URL_BANK
-import com.example.tasksix.Constants.Companion.URL_INFOBOX
-import com.example.tasksix.Constants.Companion.URL_QUERY
+import com.example.tasksix.constants.Constants.Companion.URL_ATM
+import com.example.tasksix.constants.Constants.Companion.URL_BANK
+import com.example.tasksix.constants.Constants.Companion.URL_INFOBOX
+import com.example.tasksix.constants.Constants.Companion.URL_QUERY
+import com.example.tasksix.data.model.MapPoint
 import io.reactivex.rxjava3.core.Single
 import retrofit2.http.GET
 import retrofit2.http.Query

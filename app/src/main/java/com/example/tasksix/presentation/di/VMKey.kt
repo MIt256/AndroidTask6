@@ -1,4 +1,4 @@
-package com.example.tasksix.di
+package com.example.tasksix.presentation.di
 
 import androidx.lifecycle.ViewModel
 import dagger.MapKey

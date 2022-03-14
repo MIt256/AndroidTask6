@@ -1,4 +1,4 @@
-package com.example.tasksix.vm
+package com.example.tasksix.presentation.vm
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

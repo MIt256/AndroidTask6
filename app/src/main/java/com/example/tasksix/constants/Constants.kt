@@ -1,4 +1,4 @@
-package com.example.tasksix
+package com.example.tasksix.constants
 
 import com.google.android.gms.maps.model.LatLng
 

@@ -1,7 +1,7 @@
-package com.example.tasksix.repository
+package com.example.tasksix.domain
 
-import com.example.tasksix.Constants
-import com.example.tasksix.model.QuestApi
+import com.example.tasksix.constants.Constants
+import com.example.tasksix.data.QuestApi
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.core.Single
 import javax.inject.Inject

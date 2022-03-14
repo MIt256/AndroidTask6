@@ -1,4 +1,4 @@
-package com.example.tasksix.model
+package com.example.tasksix.data.model
 
 import com.google.gson.annotations.SerializedName
 

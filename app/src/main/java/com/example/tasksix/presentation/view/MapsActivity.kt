@@ -1,14 +1,14 @@
-package com.example.tasksix.view
+package com.example.tasksix.presentation.view
 
 import android.content.Context
 import android.net.ConnectivityManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
-import com.example.tasksix.Constants.Companion.POINT_CENTRAL
+import com.example.tasksix.constants.Constants.Companion.POINT_CENTRAL
 import com.example.tasksix.R
-import com.example.tasksix.di.application.MyApplication
-import com.example.tasksix.vm.MainViewModel
+import com.example.tasksix.presentation.di.application.MyApplication
+import com.example.tasksix.presentation.vm.MainViewModel
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -16,7 +16,7 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.example.tasksix.databinding.ActivityMapsBinding
-import com.example.tasksix.model.MapPoint
+import com.example.tasksix.data.model.MapPoint
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
