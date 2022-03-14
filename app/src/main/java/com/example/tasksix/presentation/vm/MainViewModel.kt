@@ -11,7 +11,7 @@ import io.reactivex.rxjava3.schedulers.Schedulers
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import com.example.tasksix.domain.Repository
+import com.example.tasksix.data.Repository
 import java.lang.Exception
 import javax.inject.Inject
 
