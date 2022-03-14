@@ -17,6 +17,8 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import com.example.tasksix.RetrofitObj
+import com.example.tasksix.repository.Repository
+import kotlinx.coroutines.withContext
 import java.lang.Math.sqrt
 import kotlin.math.pow
 
@@ -29,36 +31,10 @@ class MainViewModel: ViewModel() {
     fun getPointList() = mapPointList
 
      fun getData() {
-        val api = RetrofitObj
-        CoroutineScope(Dispatchers.IO).launch() {
-            try{
-                val pointList = ArrayList<MapPoint>()
-                Single.zip(
-                    api.getAtmList(),
-                    api.getInfoboxList(),
-                    api.getFilialList(),
-                    { atm, infobox, filial ->
-                        atm.forEach { it.pointType = TYPE_ATM }
-                        infobox.forEach { it.pointType = TYPE_INFOBOX }
-                        filial.forEach { it.pointType = TYPE_BANK }
-                        atm + infobox + filial
-                    })
-                    .map { it.sortedWith(
-                            compareBy {sqrt((POINT_CENTRAL.latitude - it.gps_x).pow(2) + (POINT_CENTRAL.longitude - it.gps_y).pow(2))   }
-                        )
-                    }
-                    .flatMapObservable { fromIterable(it) }
-                    .take(10)
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(
-                        {pointList.add(it)},
-                        {Log.e(ERROR," $it")},
-                        {mapPointList.value = pointList}
-                    )
-            } catch (ex:Exception){Log.e(ERROR," $ex")}
-        }
-
+         CoroutineScope(Dispatchers.IO).launch() {
+         val repo = Repository()
+             withContext(Dispatchers.Main) { mapPointList.value = repo.getPoints()}
+         }
     }
 }
 
